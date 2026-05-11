@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Login Box</title>
+    
+    <!-- CSS (အလှဆင်ခြင်းအပိုင်း) -->
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            width: 350px;
+            text-align: center;
+        }
+
+        .login-card h2 {
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: #764ba2;
+            box-shadow: 0 0 5px rgba(118, 75, 162, 0.3);
+        }
+
+        #loginBtn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: #764ba2;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        #loginBtn:hover {
+            background: #5a3682;
+        }
+
+        #message {
+            margin-top: 15px;
+            font-size: 14px;
+            min-height: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-card">
+        <h2>အကောင့်ဝင်ရန်</h2>
+        
+        <div class="input-group">
+            <label for="username">အသုံးပြုသူအမည်</label>
+            <input type="text" id="username" placeholder="Username ရိုက်ထည့်ပါ">
+        </div>
+
+        <div class="input-group">
+            <label for="password">လျှို့ဝှက်နံပါတ်</label>
+            <input type="password" id="password" placeholder="Password ရိုက်ထည့်ပါ">
+        </div>
+
+        <button id="loginBtn">Login ဝင်မည်</button>
+        
+        <p id="message"></p>
+    </div>
+
+    <!-- JavaScript (လုပ်ဆောင်ချက်အပိုင်း) -->
+    <script>
+        const loginBtn = document.getElementById('loginBtn');
+        const message = document.getElementById('message');
+
+        loginBtn.addEventListener('click', function() {
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+
+            // ရိုးရှင်းတဲ့ စစ်ဆေးမှုပြုလုပ်ခြင်း
+            if (user === "" || pass === "") {
+                message.innerText = "⚠️ ကျေးဇူးပြု၍ အချက်အလက်အပြည့်အစုံဖြည့်ပါ။";
+                message.style.color = "red";
+            } else if (user === "admin" && pass === "12345") {
+                message.innerText = "✅ Login အောင်မြင်ပါသည်။";
+                message.style.color = "green";
+                // ဒီနေရာမှာ နောက် Page တစ်ခုကို လွှတ်ချင်ရင် window.location.href = "home.html"; လို့ရေးလို့ရပါတယ်။
+            } else {
+                message.innerText = "❌ အသုံးပြုသူအမည် သို့မဟုတ် လျှို့ဝှက်နံပါတ် မှားယွင်းနေပါသည်။";
+                message.style.color = "red";
+            }
+        });
+    </script>
+
+</body>
+</html>
